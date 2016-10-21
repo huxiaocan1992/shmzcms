@@ -117,11 +117,18 @@
 	font-size: 15px;
 	overflow: hidden;
 }
+.index_basecontent_wrapper .list_wrpper li a:hover{
+	text-decoration: underline;
+}
 .index_basecontent_wrapper .list_wrpper li .thumbnail {
+	display: block;
+	width: 100%;
 	height: 150px;
 }
 .index_basecontent_wrapper .list_wrpper li p {
 	margin: 0 0 10px 0;
+	width: 100%;
+	overflow: hidden;
 	font-size: 13px;
 	color: #333;
 }
@@ -134,17 +141,19 @@
 	width: 67%;
 }
 .index_basecontent_wrapper .list_wrpper li img {
-	display: inline-block;
+	display: block;
 	width: 100%;
+	min-height: 150px;
 }
 .index_pioneer_wrapper .list_wrpper{
 	display: inline-block;
-	width: 420px;
+	width: 510px;
+	vertical-align: top;
 }
 .index_pioneer_wrapper .list_wrpper li {
 	display: inline-block;
 	margin: 10px 0 10px 25px;
-	width: 180px;
+	width: 220px;
 }
 .index_pioneer_wrapper .list_wrpper li .avatar {
 	display: inline-block;
@@ -315,4 +324,91 @@
 	display: inline-block;
 	width: 30%;
 	color: #3eb687;
+}
+.index_passportquery_wrapper{
+	display: inline-block;
+	width: 350px;
+	height: 260px;
+	font-size: 14px;
+	vertical-align: top;
+}
+.index_passportquery_wrapper .title{
+
+	text-align: center;
+}
+.index_passportquery_wrapper .tab{
+	font-size: 0;
+	text-align: center;
+}
+.index_passportquery_wrapper .tab li{
+	display: inline-block;
+	margin: 0 4%;
+	padding: 0 6%;
+	width: 27%;
+	height: 40px;
+	font-size: 14px;
+	text-align: center;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #3e79b8 #3e79b8 transparent #3e79b8;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	vertical-align: middle;
+}
+.index_passportquery_wrapper .tab li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+	transition: all 0.3s;
+}
+.index_passportquery_wrapper .tab .active{
+	background: #3e79b8;
+	transition: all 0.3s;
+}
+.index_passportquery_wrapper .tab .active a{
+	color: #fff;
+	transition: all 0.3s;
+}
+.index_passportquery_wrapper .maincontent{
+	width: 100%;
+	height: 200px;
+}
+.index_passportquery_wrapper .maincontent ul{
+	display: none;
+}
+.index_passportquery_wrapper .maincontent .active{
+	display: block;
+}
+.index_passportquery_wrapper .maincontent li div{
+	margin: 25px 0;
+}
+.index_passportquery_wrapper label{
+	display: inline-block;
+	width: 20%;
+	text-align: right;
+}
+.index_passportquery_wrapper input{
+	display: inline-block;
+	padding: 0 5%;
+	width: 65%;
+	height: 30px;
+}
+.index_passportquery_wrapper .querybtn{
+	display: block;
+	margin: 10px auto;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 15px;
+	background: #3e79b8;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+}
+.index_passportquery_wrapper .querybtn:hover{
+	background: #063161;
+}
+.index_pioneer_wrapper .index_passportquery_wrapper .processquery{
+	line-height: 20px;
 }

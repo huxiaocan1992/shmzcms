@@ -344,6 +344,45 @@
 								</div>
 							</li>
 						</ul>
+						<div class="index_passportquery_wrapper">
+							<h2 class="title">公益护照查询</h2>
+							<ul class='tab'>
+								<li class='active'>
+									<a href="javascript:;">公益护照查询</a>
+								</li>
+								<li>
+									<a class='processquery' href="javascript:;">公益护照申请进度查询</a>
+								</li>
+							</ul>
+							<div class='maincontent'>
+								<ul class='active'>
+									<li>
+										<div>
+											<label>姓名:</label>
+											<input type="text" name="" id="" value="" />
+										</div>
+										<div>
+											<label>护照编号:</label>
+											<input type="text" name="" id="" value="" />
+										</div>
+									</li>
+									<a class='querybtn' href="javascript:;">查询</a>
+								</ul>
+								<ul>
+									<li>
+										<div>
+											<label>姓名:</label>
+											<input type="text" name="" id="" value="" />
+										</div>
+										<div>
+											<label>订单编号:</label>
+											<input type="text" name="" id="" value="" />
+										</div>
+									</li>
+									<a class='querybtn' href="javascript:;">查询</a>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</li>
 				<li>
@@ -720,9 +759,9 @@ $(function() {
 		$('.index_articlelist_wrapper .tab li').tabSwitch({
 			classname: '.index_articlelist_wrapper .list ul'
 		});
-
-
-
+		$('.index_passportquery_wrapper .tab li').tabSwitch({
+			classname: '.index_passportquery_wrapper .maincontent ul'
+		});
 	}
 
 	function ajax() {

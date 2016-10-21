@@ -111,7 +111,7 @@
 							</@jp.taxonomy>
 						</div>
 						<ul class='list_wrpper'>
-							<@jp.contents module="base" typeSlug="allbases" count="5">
+							<@jp.contents module="base" typeSlug="allbases" count="4">
 								<#list contents as content>
 									<li>
 										<a class='thumbnail' href="${content.url!}">
@@ -140,7 +140,7 @@
 							<a class="more" href="/jpress/base-allbases-1">更多&gt;&gt;</a>
 						</div>
 						<ul class='list_wrpper'>
-							<@jp.contents module="activity" typeSlug="allactivities" count="5">
+							<@jp.contents module="activity" typeSlug="allactivities" count="4">
 								<#list contents as content>
 									<li>
 										<a class='thumbnail' href="${content.url!}">
@@ -242,6 +242,45 @@
 								</div>
 							</li>
 						</ul>
+						<div class="index_passportquery_wrapper">
+							<h2 class="title">公益护照查询</h2>
+							<ul class="tab">
+								<li class="active">
+									<a href="javascript:;">公益护照查询</a>
+								</li>
+								<li class=" ">
+									<a class="processquery" href="javascript:;">公益护照申请进度查询</a>
+								</li>
+							</ul>
+							<div class="maincontent">
+								<ul class="active">
+									<li>
+										<div>
+											<label>姓名:</label>
+											<input type="text" name="" id="" value="">
+										</div>
+										<div>
+											<label>护照编号:</label>
+											<input type="text" name="" id="" value="">
+										</div>
+									</li>
+									<a class="querybtn" href="javascript:;">查询</a>
+								</ul>
+								<ul class=" ">
+									<li>
+										<div>
+											<label>姓名:</label>
+											<input type="text" name="" id="" value="">
+										</div>
+										<div>
+											<label>订单编号:</label>
+											<input type="text" name="" id="" value="">
+										</div>
+									</li>
+									<a class="querybtn" href="javascript:;">查询</a>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</li>
 				<li>
@@ -295,37 +334,33 @@
 									<ul class='active'>
 										<@jp.contents module="article" typeSlug="announcement" count="10">
 											<#list contents as content>
-											<li>
-											<a href="${content.url!}" title='${content.title!}'>
-												<h6>${content.title!}</h6>
-											</a>
-										</li>
-												
+												<li>
+													<a href="${content.url!}" title='${content.title!}'>
+														<h6>${content.title!}</h6>
+													</a>
+												</li>
 											</#list>
 										</@jp.contents>
-										
 									</ul>
 									<ul>
 										<@jp.contents module="article" typeSlug="news" count="10">
 											<#list contents as content>
-											<li>
-											<a href="${content.url!}" title='${content.title!}'>
-												<h6>${content.title!}</h6>
-											</a>
-										</li>
-												
+												<li>
+													<a href="${content.url!}" title='${content.title!}'>
+														<h6>${content.title!}</h6>
+													</a>
+												</li>
 											</#list>
 										</@jp.contents>
 									</ul>
 									<ul>
 										<@jp.contents module="article" typeSlug="policy" count="10">
 											<#list contents as content>
-											<li>
-											<a href="${content.url!}" title='${content.title!}'>
-												<h6>${content.title!}</h6>
-											</a>
-										</li>
-												
+												<li>
+													<a href="${content.url!}" title='${content.title!}'>
+														<h6>${content.title!}</h6>
+													</a>
+												</li>
 											</#list>
 										</@jp.contents>
 									</ul>
@@ -491,6 +526,10 @@
 			$('.index_articlelist_wrapper .tab li').tabSwitch({
 				classname: '.index_articlelist_wrapper .list ul'
 			});
+			$('.index_passportquery_wrapper .tab li').tabSwitch({
+				classname: '.index_passportquery_wrapper .maincontent ul'
+			});
+				
 		}
 
 		function ajax() {
