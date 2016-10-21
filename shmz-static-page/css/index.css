@@ -461,7 +461,7 @@ a {
 .con_sec .acbox ul {
 	font-size: 0;
 }
-.con_sec .acbox .Activity li {
+.con_sec .acbox ul li {
 	width: 224px;
 	height: 270px;
 	background-color: #FFFFFF;
