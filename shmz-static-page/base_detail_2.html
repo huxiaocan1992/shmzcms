@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/base_detail.css" />
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/base.js"></script>
+	</head>
+	<body>
+	<!--活动详情页  -->
+	<div class="ad_box" id="ad_box">
+		<div id="ad_detail_title"></div>
+		<div class="ad_container">
+			<div class="ad_con_left" id="ad_con_left">
+				<p align="center" class="ad_leftImg">
+					<img src="../images/activeVolunteer/headimg02.jpg">
+				</p>
+				<div class="ad_conChange">
+					<ul class="ad_conTag">
+						<li class="ad_base ad_currentLi">
+							<a href="javascript:void(0)">基地简介</a>
+						</li>
+						<li class="ad_project">
+							<a href="javascript:void(0)">发起的项目</a>
+						</li>
+						<li class="ad_message ad_tagLast">
+							<a href="javascript:void(0)">留言咨询</a>
+						</li>
+					</ul>
+					<ul class="ad_conUl" id="ad_conUl">
+						<!--<li class="ad_baseCon">
+							<table>
+								<tbody>
+									<tr>
+										<td class="ad_tdLeft">区域：</td>
+										<td class="ad_tdRStyle01">静安区</td>
+									</tr>
+									<tr>
+										<td class="ad_tdLeft">挂牌地址：</td>
+										<td class="ad_tdRStyle01">鸿翔路51弄月亮河碧园北西侧3楼</td>
+									</tr>
+									<tr>
+										<td class="ad_tdLeft">可容纳人数：</td>
+										<td  class="ad_tdRStyle02">120</td>
+									</tr>
+									<tr>
+										<td class="ad_tdLeft">岗位数：</td>
+										<td  class="ad_tdRStyle02">0</td>
+									</tr>
+									<tr>
+										<td class="ad_tdLeft">公益项目总数：</td>
+										<td  class="ad_tdRStyle02">14</td>
+									</tr>
+									<tr>
+										<td class="ad_tdLeft">成立时间：</td>
+										<td  class="ad_tdRStyle02">2016-09-29</td>
+									</tr>
+									<tr>
+										<td class="ad_tdLeft">服务时长：</td>
+										<td  class="ad_tdRStyle01">120</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+						<li class="ad_projectCon">
+							发起的项目内容
+						</li>
+						<li class="ad_messageCon">
+							留言咨询
+						</li>-->
+					</ul>
+				</div>
+					
+			</div>
+			<div class="ad_con_right">
+				<ul>
+					<li class="ad_rCommon ad_atten">
+						<h2 class="ad_rightTit">基地联系人</h2>
+						<div class="ad_rightCon">
+							<ul>
+								<li class="ad_rName">张三</li>
+								<li class="ad_rMobile">手机：1396564546</li>
+								<li class="ad_rPhone">电话：021-9867545</li>
+								<li class="ad_rEmail">邮编：shanghaigongyi@163.com</li>
+							</ul>
+							<a class="ad_rMail" href="javascript:void(0)">给他发站内信</a>
+						</div>
+					</li>
+					<li class="ad_rCommon ad_baseQR">
+						<h2 class="ad_rightTit">基地二维码</h2>
+						<div class="ad_rightCon" align="center">
+							<img src="../images/erweima.png">
+							<p>APP扫描二维码关注基地信息</p>
+						</div>
+					</li>
+					<li class="ad_rCommon ad_share">
+						<h2 class="ad_rightTit">基地分享</h2>
+						<div class="ad_rightCon">
+							<ul>
+								<li class="ad_shareLi01">
+									<p class="ad_shareFol">
+										<a href="javascript:void(0)"></a>
+										<span>关注（2）</span>
+									</p>
+									<p class="ad_shareFab">
+										<a href="javascript:void(0)"></a>
+										<span>赞（2）</span>
+									</p>
+								</li>
+								<li class="ad_shareLi02">
+									<span>分享</span>
+									<a class="ad_shareAdd01" href="javascript:void(0)" target="_blank"></a>
+									<a class="ad_shareAdd02" href="javascript:void(0)" target="_blank"></a>
+									<a class="ad_shareAdd03" href="javascript:void(0)" target="_blank"></a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="ad_rCommon ad_position">
+						<h2 class="ad_rightTit">基地位置</h2>
+						<div class="ad_rightCon">
+							<p>上海市静安区</p>
+							<a href="javascript:void(0)">查看地图</a>
+						</div>
+					</li>
+					<li class="ad_rCommon ad_Recommend">
+						<h2 class="ad_rightTit">推荐项目</h2>
+						<div class="ad_rightCon">
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--活动详情页结束-->
+	</body>
+</html>
+<script>
+$(function(){
+	base_detial();
+})
+var view={
+		all:"抢险救灾,生态建设,文化建设,大型活动,西部开发,网络文明,社区服务,海外服务,社会管理,扶贫济困,助老助残,其他",
+		wenhua:"生态建设,文化建设",
+		tiyu:"大型活动",
+		jiaoyu:"西部开发,网络文明",
+		shequ:"社区服务,海外服务,社会管理",
+		shehuifuwu:"扶贫济困,助老助残,其他",
+		weishengyiliao:"抢险救灾"
+	}	
+function GetJsonData(view_type) {
+			serviceFieldString="";
+			switch (view_type){
+				case "wenhua":	serviceFieldString=view.wenhua;break;
+				case "tiyu":	serviceFieldString=view.tiyu;break;
+				case "jiaoyu":	serviceFieldString=view.jiaoyu; break;
+				case "shequ":	serviceFieldString=view.shequ; break;
+				case "shehuifuwu":	serviceFieldString=view.shehuifuwu; break;
+				case "weishengyiliao":	serviceFieldString=view.weishengyiliao; break;
+				default :serviceFieldString=view.all; break;
+			}
+			var json = {
+				serviceFieldString:serviceFieldString
+			};
+			return json;
+	}
+	function base_detial(view_type){
+		var hashes = window.location.href;
+		var base_start_local=hashes.indexOf("?");
+		var base_end_local=hashes.indexOf("&");
+		var base_id=hashes.substring(base_start_local+1).split("&");
+		var id=(base_id[0].split("="))[1];
+		var i=(base_id[1].split("="))[1];
+		$.ajax({
+			type:"post",
+				url:"http://test.dakaqi.cn:3030/approve/address/queryAddressList",
+				datatype:"json",
+				async:true,
+				contentType: 'application/json; charset=utf-8',
+				data:JSON.stringify(GetJsonData(view_type)),
+				error:function(datas){
+					alert('加载失败');
+				},
+				success:function(datas){
+					var base_detail_list=datas.data;
+					if(base_detail_list[i].id==id){
+						//标题
+						var base_detail_title="";
+						base_detail_title+="<h2 class='ad_title ad_clip'>"+base_detail_list[i].name+"</h2>"+
+						"<p class='ad_navTetail'>"+
+							"<span class='ad_nav01'>分类：其他</span>"+
+							"<span class='ad_nav02'>组织："+base_detail_list[i].createTime+"</span>"+
+						"</p>"
+						//标题结束
+						//标签内容
+						var ad_conUl="";
+						ad_conUl+="<li class='ad_baseCon'>"+
+							"<table>"+
+								"<tbody>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>通讯地址：</td>"+
+										"<td class='ad_tdRStyle01'>"+base_detail_list[i].address+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>可容纳人所：</td>"+
+										"<td class='ad_tdRStyle01'>"+base_detail_list[i].dayPersions+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>传真：</td>"+
+										"<td  class='ad_tdRStyle02'>"+base_detail_list[i].fax+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>是否有专职工作人员：</td>"+
+										"<td  class='ad_tdRStyle02'>"+base_detail_list[i].hasFulltimePersion+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>是否有后勤保障：</td>"+
+										"<td  class='ad_tdRStyle02'>"+base_detail_list[i].hasLogistics+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>是否有管理制度：</td>"+
+										"<td  class='ad_tdRStyle02'>"+base_detail_list[i].hasManagerRegime+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>是否有培训交流场地：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].hasTrainAdress+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>是否有培训计划：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].hasTrainPlan+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>岗位数：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].jobs+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>基地负责人：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].montorName+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>基地负责人手机：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].montorPhone+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>邮编：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].postCode+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>单位基本情况及主要公益项目特色：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].projectDemo+"</td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>主要公益项目：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].projectName+"</td>"+
+									"</tr>"+
+								"</tbody>"+
+							"</table>"+
+						"</li>"+
+						"<li class='ad_projectCon' style='display:none;'>"+
+							"<table>"+
+								"<tbody>"+
+									"<tr>"+
+										"<td class='ad_tdLeft'>每年公益项目总数：</td>"+
+										"<td  class='ad_tdRStyle01'>"+base_detail_list[i].yearProjects+"</td>"+
+									"</tr>"+
+								"</tbody>"+
+							"</table>"+
+						"</li>"+
+						"<li class='ad_messageCon' style='display:none;'>"+
+							"留言咨询"+
+						"</li>"
+						//标签内容结束
+						
+					}
+					$("#ad_detail_title").html(base_detail_title);
+					$("#ad_conUl").html(ad_conUl);
+				}
+		})
+
+	}
+</script>
