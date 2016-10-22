@@ -724,6 +724,8 @@ h2.ad_title {
 	color: #0268B1;
 }
 .ad_atten .ad_rightCon a.ad_rMail, .ad_position .ad_rightCon a {
+	height: 30px;
+	line-height: 30px;
 	background: #ffa400;
 	text-align: center;
 	display: block;
