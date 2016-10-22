@@ -1,7 +1,6 @@
 <#include "_layout.html"/> <@layout>
 <!--活动详情页  -->
-<div class="dConBox">
-	<div class="details">
+<div class="details">
 		<div class="detailsBox">
 			<h2>${content.title!}</h2>
 		</div>
@@ -20,8 +19,9 @@
 	<div class='dConBox'>
 		<div class="dConBox-In">
 			<div class="ad_con_left">
-				<p align="center" class="ad_leftImg">
+				<p class="ad_leftImg">
 					<img src="${(content.thumbnail)!}">
+					${content.text!}
 				</p>
 				<div class="ad_conChange">
 					<ul class="ad_conTag">
@@ -29,7 +29,6 @@
 						<li class="ad_project"><a href="javascript:;">发起的项目</a></li>
 						<li class="ad_message ad_tagLast"><a href="javascript:;">留言咨询</a></li>
 					</ul>
-					
 				</div>
 			</div>
 			<div class="dConBox-R">
@@ -88,7 +87,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 <!--活动详情页结束-->
 <!--底部-->
 </@layout>

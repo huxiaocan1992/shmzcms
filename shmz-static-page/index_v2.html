@@ -4,11 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link rel="stylesheet" href="css/swiper_modified.css" />
 	<link rel="stylesheet" href="css/reset.css" />
 	<link rel="stylesheet" href="css/common.css" />
 	<link rel="stylesheet" href="css/index.css" />
 	<link rel="stylesheet" href="css/index_v2.css" />
-	<link rel="stylesheet" href="assets/css/swiper.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="assets/js/swiper.min.js"></script>
 	<script type="text/javascript" src="js/base.js"></script>
@@ -717,77 +717,96 @@
 </body>
 <script type="text/javascript">
 $(function() {
-	index();
-	//ajax();
-	function index() {
-		var bannerSwiper = new Swiper('.banner', {
-			loop: true,
-			pagination: '.banner_icon',
-			paginationClickable: true,
-			autoplay: 5000
-		});
-		$.fn.extend({
-			tabSwitch: function(options) {
-				options = $.extend({
-					//对应的分页class父级元素
-					classname: '',
-					callback: function() {}
-				}, options)
-				var $this = $(this);
-				$this.click(function(e) {
-					var index = $(this).index();
-					$(this).addClass('active').siblings().removeClass('active');
-					$(options.classname).eq(index).addClass('active').siblings().removeClass('active');
-					options.callback(index);
-				})
-			}
-		});
-		$('.index_shoecaselist_wrapper li').tabSwitch({
-			classname: '.index_maincontent_wrapper>li',
-			callback: function(index) {
-				var newsSwiper;
-				if (newsSwiper == null && index == 3) {
-					newsSwiper = new Swiper('.index_article_wrapper .carousel', {
-						loop: true,
-						pagination: '.index_article_wrapper .pagination',
-						paginationClickable: true,
-						lazyLoading: true
-					});
+	$.fn.extend({
+		tabSwitch: function(options) {
+			options = $.extend({
+				//对应的分页class父级元素
+				classname: '',
+				callback: function() {}
+			}, options)
+			var $this = $(this);
+			$this.click(function(e) {
+				var index = $(this).index();
+				$(this).addClass('active').siblings().removeClass('active');
+				$(options.classname).eq(index).addClass('active').siblings().removeClass('active');
+				options.callback(index);
+			})
+		}
+	});
+	var index = {
+		banner: function() {
+			var bannerSwiper = new Swiper('.banner', {
+				loop: true,
+				pagination: '.banner_icon',
+				paginationClickable: true,
+				autoplay: 5000
+			});
+		},
+		tabs: function() {
+			$('.index_shoecaselist_wrapper li').tabSwitch({
+				classname: '.index_maincontent_wrapper>li',
+				callback: function(index) {
+					var newsSwiper;
+					if (newsSwiper == null && index == 3) {
+						newsSwiper = new Swiper('.index_article_wrapper .carousel', {
+							loop: true,
+							pagination: '.index_article_wrapper .pagination',
+							paginationClickable: true,
+							lazyLoading: true
+						});
+					}
 				}
+			});
+			$('.index_articlelist_wrapper .tab li').tabSwitch({
+				classname: '.index_articlelist_wrapper .list ul'
+			});
+			$('.index_passportquery_wrapper .tab li').tabSwitch({
+				classname: '.index_passportquery_wrapper .maincontent ul'
+			});
+		},
+		count: function() {
+			Num_Handle("#center_num_01");
+			Num_Handle("#center_num_02");
+			Num_Handle("#center_num_03");
+
+			//数字处理
+			function Num_Handle(NumValue) {
+				var numValue = $(NumValue).html().split('');
+				var text_html = "<ul style='display:table;margin:0 auto;overflow:hidden;'>";
+				for (var i = 0; i < numValue.length; i++) {
+					text_html += "<li style='background:#fff;color: #5e96c9;font-size:24px;float:left;width:30px;height:38px;line-height:38px;text-align: center;   margin-left:1px;'>" + numValue[i] + "</li>"
+				}
+				text_html += "</ul>"
+				$(NumValue).html(text_html);
 			}
-		});
-		$('.index_articlelist_wrapper .tab li').tabSwitch({
-			classname: '.index_articlelist_wrapper .list ul'
-		});
-		$('.index_passportquery_wrapper .tab li').tabSwitch({
-			classname: '.index_passportquery_wrapper .maincontent ul'
-		});
-	}
+		},
+		ajax: function() {
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+				data: JSON.stringify(GetJsonData()),
+				url: 'http://test.dakaqi.cn:3030/approve/address/queryAddressList',
+				success: function(data) {
+					console.log(data)
+				}
+			})
 
-	function ajax() {
-		$.ajax({
-			type: 'post',
-			dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
-			data: JSON.stringify(GetJsonData()),
-			url: 'http://test.dakaqi.cn:3030/approve/address/queryAddressList',
-			success: function(data) {
-				console.log(data)
+			function GetJsonData() {
+				var json = {
+
+				};
+				return json;
 			}
-		})
-
-		function GetJsonData() {
-			var json = {
-
-			};
-			return json;
+		},
+		init: function() {
+			this.banner();
+			this.tabs();
+			this.count();
 		}
 	}
-
-
+	index.init();
 })
-
 </script>
 
 </html>
-

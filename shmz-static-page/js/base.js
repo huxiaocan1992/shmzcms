@@ -22,20 +22,7 @@ $(function() {
     })
 
     //数字处理
-    Num_Handle("#center_num_01");
-    Num_Handle("#center_num_02");
-    Num_Handle("#center_num_03");
-
-    //数字处理
-    function Num_Handle(NumValue) {
-        var numValue = $(NumValue).html().split('');
-        var text_html = "<ul style='display:table;margin:0 auto;overflow:hidden;'>";
-        for (var i = 0; i < numValue.length; i++) {
-            text_html += "<li style='background:#fff;color: #5e96c9;font-size:24px;float:left;width:30px;height:38px;line-height:38px;text-align: center;   margin-left:1px;'>" + numValue[i] + "</li>"
-        }
-        text_html += "</ul>"
-        $(NumValue).html(text_html);
-    }
+    
 
     //tab切换效果
     function tabChange(tag, tagCon, currentClass) { //tag 用于切换的标签，tagCon用于切换的内容，currentClass更换的样式值

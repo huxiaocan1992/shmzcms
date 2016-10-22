@@ -627,6 +627,7 @@ h2.ad_title {
 }
 .ad_leftImg {
 	padding: 40px 0px;
+	min-height: 330px;
 	background: #fff;
 	margin-bottom: 16px;
 }
