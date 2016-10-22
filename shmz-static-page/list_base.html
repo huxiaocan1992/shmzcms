@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/style_index.css" />
+		<script type="text/javascript" src="../js/jquery.js"></script>
+	</head>
+	<body>
+			<!--头部-->
+		<div class="container">				
+				<div class="h_header" >
+					<div class="h_logo">
+						<img src="../images/logo.png" alt="logo" class="logo_img" />
+					</div>
+					<div class="h_nav">
+						<ul>
+							<li>
+								<a href="index.html">首页</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">公益活动</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">公益组织</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">亲子体验</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">时长公示</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">帮助中心</a>
+							</li>
+						</ul>
+					</div>
+					<div class="h_login_reg">
+						<a class="h_login" href="javascript:void(0)">登录</a>
+						<a class="h_reg" href="javascript:void(0)">注册</a>
+					</div>
+				</div>
+			</div>
+		<!--头部结束-->
+		<!--中间内容-->
+		<div class="list_container_box">
+			<div class="list_condition">
+				<ul class="list_condition_detail">
+					<li><a class="list_active"  onclick="ajaxList('')" href="#">全部</a>
+					</li>
+					<li><a href="#" onclick="ajaxList('wenhua')" name="wenhua">文化</a></li>
+					<li><a href="#" onclick="ajaxList('tiyu')" name="tiyu">体育</a></li>
+					<li><a href="#" onclick="ajaxList('jiaoyu')" name="jiaoyu">教育</a></li>
+					<li><a href="#" onclick="ajaxList('shequ')" name="shequ">社区</a></li>
+					<li><a href="#" onclick="ajaxList('shehuifuwu')" name="shehuifuwu">社会服务</a></li>
+					<li><a href="#" onclick="ajaxList('weishengyiliao')" name="weishengyiliao">卫生医疗</a></li>
+				</ul>
+			</div>
+			<div class="list_container">
+				<!--搜索列表-->
+				<div class="list_search">
+					<ul class="list_search_class">
+						<li class="">
+							<a href="#">综合排序</a>
+						</li>
+						<li class="list_search_col">
+							<a href="#">不限状态</a>
+						</li>
+						<li class="list_search_col">
+							<a href="#">不限时间</a>
+						</li>
+						<li class="list_search_col">
+							<a href="#">不限地域</a>
+						</li>
+						<li class="list_search_col">
+							<a href="#">不限排序</a>
+						</li>
+					</ul>
+					<div class="search_box">
+						<input type="text" placeholder="搜索" id="search_box" />
+						<button type="button" class="list_search_botton" onclick="ajaxList()" value="搜索">搜索</button>
+					</div>					
+				</div>
+				<!--搜索列表结束-->
+				<!--列表详细-->
+				<ul class="list_detail" id="list_detail">
+					
+				</ul>
+				
+				<!--列表详细结束-->
+				<!--列表分页-->
+				<ul class="list_paging" id="list_paging"></ul>
+				<!--<ul class="list_paging" id="list_paging" style="display: none;">
+				</ul>-->
+				<!--列表分页结束-->
+			</div>
+		</div>
+		<!--中间内容结束-->	
+		<!--底部-->
+		<div class="footer">
+				<div class="footer_con">
+					<p class="copyright"> Copyright &copy;2010-2017 上海市公益服务促进中心 沪ICP备1206628号</p>
+					<ul class="enjon_icon">
+						<li><a href="#" class="icon_01"></a></li>
+						<li><a href="#" class="icon_02"></a></li>
+						<li><a href="#" class="icon_03"></a></li>
+					</ul>
+				</div>
+			</div>
+		<!--底部-->
+		<input id="view_type" type="hidden" name="all" value="all">
+	</body>
+	
+</html>
+
+<link rel="stylesheet" href="../laypage-v1.3/laypage/skin/laypage.css"/><!--分页的css-->
+<script src="../laypage-v1.3/laypage/laypage.js"></script><!--分页的js-->
+<script>
+	$(function(){
+	 	ajaxList('all');
+	 	$(".list_condition_detail li a").click(function(e){
+			$(".list_condition_detail li a").removeClass("list_active");
+			$(this).addClass("list_active");
+		})
+	 })
+	/*分类处理*/
+	var view={
+		all:"抢险救灾,生态建设,文化建设,大型活动,西部开发,网络文明,社区服务,海外服务,社会管理,扶贫济困,助老助残,其他",
+		wenhua:"生态建设,文化建设",
+		tiyu:"大型活动",
+		jiaoyu:"西部开发,网络文明",
+		shequ:"社区服务,海外服务,社会管理",
+		shehuifuwu:"扶贫济困,助老助残,其他",
+		weishengyiliao:"抢险救灾"
+	}	
+	/*分类处理结束*/
+	function GetJsonData(view_type) {
+		var nameLike="",
+			pageNo=1,
+			name="",
+			area="",
+			serviceFieldString="";
+			switch (view_type){
+				case "wenhua":	serviceFieldString=view.wenhua;break;
+				case "tiyu":	serviceFieldString=view.tiyu;break;
+				case "jiaoyu":	serviceFieldString=view.jiaoyu; break;
+				case "shequ":	serviceFieldString=view.shequ; break;
+				case "shehuifuwu":	serviceFieldString=view.shehuifuwu; break;
+				case "weishengyiliao":	serviceFieldString=view.weishengyiliao; break;
+				default :serviceFieldString=view.all; break;
+			}
+			nameLike=$("#search_box").val();
+			var json = {
+				nameLike:nameLike,
+				serviceFieldString:serviceFieldString
+			};
+			return json;
+		}
+	function ajaxList(view_type){
+		$.ajax({
+				type:"post",
+				url:"http://test.dakaqi.cn:3030/approve/address/queryAddressList",
+				datatype:"json",
+				async:true,
+				contentType: 'application/json; charset=utf-8',
+				data:JSON.stringify(GetJsonData(view_type)),
+				error:function(datas){
+					alert('加载失败');
+				},
+				success:function(datas){
+					var base_list=datas.data;
+						var nums =5; //每页出现的数量
+					var pages = Math.ceil(base_list.length/nums); //得到总页数
+					
+					var thisDate = function(curr){
+					    //此处只是演示，实际场景通常是返回已经当前页已经分组好的数据
+					    var html_list = '', last = curr*nums - 1;
+					    last = last >= base_list.length ? (base_list.length-1) : last;
+						for(var i=(curr*nums - nums);i<=last;i++){
+							html_list+="<li class='list_detail_li'>"+
+							"<a class='list_img' href='#'>"+
+								"<img src='../images/tuijian01.png'/>"+
+							"</a>"+
+							"<dl class='list_detail_content'>"+
+									"<dt><a class='list_detail_title clip' target='_blank' href='base_detail.html?id="+base_list[i].id+"&i="+i+"' onclick='ajaxList()'>"+base_list[i].name+"</a></dt>"+
+									"<dd class='list_address clip'>地址："+base_list[i].address+"</dd>"+
+									"<dd class='list_area clip'>联系电话："+base_list[i].contactPhone+" </dd>"+
+//									"<dd>"+
+//										"<div class='list_detail_progress'>"+
+//											"<span class='ldp_baoming'>报名截止:</span>"+
+//											"<p><span class='ldp_jdt' style='width: 20%;'></span></p>"+
+//											"<span class='ldp_syts'>剩<em>132</em>天</span>"+
+//										"</div>"+
+//									"</dd>"+
+							"</dl>"+
+							"<a class='list_handle'>联系基地</a>"+
+							"<ul class='list_operation'>"+
+								"<li class='list_operation_li'>"+
+									"<i class='list_operation_01'></i>"+
+									"<em>感兴趣</em>"+
+									"<strong>2</strong>"+
+								"</li>"+
+								"<li class='list_operation_li'>"+
+									"<i class='list_operation_02'></i>"+
+									"<em>招募人数</em>"+
+									"<strong>20</strong>"+
+								"</li>"+
+								"<li class='list_operation_li'>"+
+									"<i class='list_operation_03'></i>"+
+									"<em>关注</em>"+
+									"<strong>200</strong>"+
+								"</li>"+
+							"</ul>"+
+							"</li>"
+						}
+						return html_list;
+					};					
+					//调用分页
+					laypage({
+					    cont: 'list_paging',
+					    pages: pages,
+					    skin:'#1E9FFF',
+					    skip: true,
+					    first:'首页',
+					    last:'尾页',
+					    jump: function(obj,first){
+					        document.getElementById('list_detail').innerHTML = thisDate(obj.curr );
+					    }
+					})
+				}
+			})
+	}
+	 
+</script>
